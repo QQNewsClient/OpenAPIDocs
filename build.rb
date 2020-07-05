@@ -1,4 +1,4 @@
-
+#encoding: utf-8
 
 require 'find'
 
@@ -22,7 +22,7 @@ Find.find('./src/Docs') do |path|
 		if File.basename(path) == 'Docs' || File.basename(path) == 'assets'
 		else
 			func = File.basename(path)
-			content += "\t*\t" + func[2..] + "\n"
+			content += "\t*\t" + func[2..-1] + "\n"
 		end
 	elsif File.file?(path)
 		if File.extname(path) == '.md'
@@ -41,7 +41,7 @@ Find.find('./src/APIs') do |path|
 		if File.basename(path) == 'APIs'
 		else
 			func = File.basename(path)
-			content += "\t*\t" + func[3..] + "\n"
+			content += "\t*\t" + func[3..-1] + "\n"
 		end
 	elsif File.file?(path)
 		if File.extname(path) == '.md'
@@ -64,7 +64,7 @@ Find.find('./src/LifeCycles') do |path|
 		if File.basename(path) == 'LifeCycles'
 		else
 			func = File.basename(path)
-			content += "\t*\t" + func[2..] + "\n"
+			content += "\t*\t" + func[2..-1] + "\n"
 		end
 	elsif File.file?(path)
 		if File.extname(path) == '.md'
@@ -87,7 +87,7 @@ $catalogName = ""
 supportList =  "|分类|能力|JSApi|Hippy|Applet|Flutter|\n|---|---|---|---|---|---|\n"
 Find.find('./src/APIs') do |path|
 	if File.directory?(path)
-		$catalogName = File.basename(path)[3..]
+		$catalogName = File.basename(path)[3..-1]
 	elsif File.file?(path)
 		if File.extname(path) == '.md'
 			if File.basename(path) == 'intro.md'
@@ -96,7 +96,7 @@ Find.find('./src/APIs') do |path|
 				trim_title = strip_or_self!(title[1..-1])	
 				support = IO.readlines(path)[5]
 				trim_support = strip_or_self!(support).split()
-				supportList += "|" + $catalogName + "|[" + trim_title + '](.' + path[10..] + ')|' + show(trim_support[1]) + '|' + show(trim_support[3]) + '|' + show(trim_support[5]) + '|' +  show(trim_support[7])+ '|' + "\n"
+				supportList += "|" + $catalogName + "|[" + trim_title + '](.' + path[10..-1] + ')|' + show(trim_support[1]) + '|' + show(trim_support[3]) + '|' + show(trim_support[5]) + '|' +  show(trim_support[7])+ '|' + "\n"
 				$catalogName = ""
 			end
 		end
