@@ -27,7 +27,7 @@ Find.find('./src/Docs') do |path|
 	elsif File.file?(path)
 		if File.extname(path) == '.md'
 			title = File.basename(path)
-			trim_title = strip_or_self!(title)
+			trim_title = strip_or_self!(title[0..-4])
 			content += "\t\t*\t[" + trim_title + "](" + path + ")\n"
 		end
 	else
@@ -47,8 +47,9 @@ Find.find('./src/APIs') do |path|
 		if File.extname(path) == '.md'
 			if File.basename(path) == 'intro.md'
 			else
+				fileIndex = File.basename(path)[0]
 				title = IO.readlines(path)[0]
-				trim_title = strip_or_self!(title[1..-1])
+				trim_title = fileIndex + ". " + strip_or_self!(title[1..-1])
 				content += "\t\t*\t[" + trim_title + "](" + path + ")\n"
 			end
 		end
@@ -69,8 +70,9 @@ Find.find('./src/LifeCycles') do |path|
 		if File.extname(path) == '.md'
 			if File.basename(path) == 'intro.md'
 			else
+				fileIndex = File.basename(path)[0]
 				title = IO.readlines(path)[0]
-				trim_title = strip_or_self!(title[1..-1])
+				trim_title = fileIndex + ". " + strip_or_self!(title[1..-1])
 				content += "\t\t*\t[" + trim_title + "](" + path + ")\n"
 			end
 		end
@@ -81,28 +83,26 @@ end
 
 File.open('./SUMMARY.md', "w") { |file| file << content }
 
+$catalogName = ""
+supportList =  "|分类|能力|JSApi|Hippy|Applet|Flutter|\n|---|---|---|---|---|---|\n"
+Find.find('./src/APIs') do |path|
+	if File.directory?(path)
+		$catalogName = File.basename(path)[3..]
+	elsif File.file?(path)
+		if File.extname(path) == '.md'
+			if File.basename(path) == 'intro.md'
+			else
+				title = IO.readlines(path)[0]
+				trim_title = strip_or_self!(title[1..-1])	
+				support = IO.readlines(path)[5]
+				trim_support = strip_or_self!(support).split()
+				supportList += "|" + $catalogName + "|[" + trim_title + '](.' + path[10..] + ')|' + show(trim_support[1]) + '|' + show(trim_support[3]) + '|' + show(trim_support[5]) + '|' +  show(trim_support[7])+ '|' + "\n"
+				$catalogName = ""
+			end
+		end
+	else
+	end
+end
 
-# supportList =  '||能力|JSApi|Hippy|Applet|Flutter|' + "\n" + '|---|---|---|---|---|---|'
-# Find.find('./src/APIs') do |path|
-# 	if File.directory?(path)
-# 		func = File.basename(path)
-# 		# puts '* [' + func + '](' + path + ')'
-# 	elsif File.file?(path)
-# 		if File.extname(path) == '.md'
-# 			if File.basename(path) == 'intro.md'
-# 			else
-# 				title = IO.readlines(path)[0]
-# 				trim_title = strip_or_self!(title[1..-1])	
-
-# 				support = IO.readlines(path)[5]
-			
-# 				trim_support = strip_or_self!(support).split()
-# 				supportList += '||[' + trim_title + '](' + path + ')|' + show(trim_support[1]) + '|' + show(trim_support[3]) + '|' + show(trim_support[5]) + '|' +  show(trim_support[7])+ '|' + "\n"
-# 			end
-# 		end
-# 	else
-# 	end
-# end
-
-# File.open('./src/APIs/intro.md', "w") { |file| file << supportList }
+File.open('./src/APIs/intro.md', "w") { |file| file << supportList }
 
