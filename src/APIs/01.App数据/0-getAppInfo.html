@@ -676,6 +676,19 @@
             
         </li>
     
+        <li class="chapter " data-level="3.1.4.7" data-path="../03.分享/7-disableSnapshotShare.html">
+            
+                <a href="../03.分享/7-disableSnapshotShare.html">
+            
+                    
+                    7. 禁用客户端截图分享
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1109,6 +1122,19 @@
             
                     
                     4. 时长上报
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8.5" data-path="../07.日志与上报/5-setReportParams.html">
+            
+                <a href="../07.日志与上报/5-setReportParams.html">
+            
+                    
+                    5. 时长上报附加参数
             
                 </a>
             
@@ -2016,7 +2042,6 @@
 <tr>
 <th>&#x53C2;&#x6570;&#x540D;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x5FC5;&#x586B;</th>
 <th>&#x8BF4;&#x660E;</th>
 </tr>
 </thead>
@@ -2024,67 +2049,61 @@
 <tr>
 <td>systemVersion</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x53F7;(&#x5B89;&#x5353;6030&#x7528;&#x7684;int&#xFF0C;6050&#x8D77;&#x7EDF;&#x4E00;string)</td>
 </tr>
 <tr>
 <td>version</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>&#x5BA2;&#x6237;&#x7AEF;&#x7248;&#x672C;&#x53F7;</td>
 </tr>
 <tr>
 <td>deviceId</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>&#x8BBE;&#x5907;id</td>
 </tr>
 <tr>
 <td>uid</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>&#x8BBE;&#x5907;uid</td>
 </tr>
 <tr>
 <td>omgMid</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>omgid</td>
 </tr>
 <tr>
 <td>omgBizid</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>omgBizid</td>
 </tr>
 <tr>
 <td>networkStatus</td>
 <td>String</td>
-<td>&#x662F;</td>
 <td>&#x7F51;&#x7EDC;&#x72B6;&#x6001;&#x3002;<code>0-&#x65E0;&#x7F51;&#x7EDC;</code>&#x3001;<code>1-WiFi</code>&#x3001;<code>2-&#x79FB;&#x52A8;&#x7F51;&#x7EDC;</code></td>
 </tr>
 <tr>
 <td>idfa</td>
 <td>String</td>
-<td>&#x5426;</td>
 <td>&#x8BBE;&#x5907;idfa&#xFF08;&#x4EC5;iOS&#xFF09;</td>
 </tr>
 <tr>
 <td>imei</td>
 <td>String</td>
-<td>&#x5426;</td>
 <td>&#x8BBE;&#x5907;imei&#xFF08;&#x4EC5;&#x5B89;&#x5353;&#xFF09;</td>
 </tr>
 <tr>
 <td>imsi</td>
 <td>String</td>
-<td>&#x5426;</td>
 <td>&#x8BBE;&#x5907;imsi&#xFF08;&#x4EC5;Android&#xFF09;</td>
+</tr>
+<tr>
+<td>qimei</td>
+<td>String</td>
+<td>&#x706F;&#x5854; qimei</td>
 </tr>
 <tr>
 <td>statusBarHeight</td>
 <td>Number</td>
-<td>&#x5426;</td>
 <td>&#x5B89;&#x5353;6.0.50&#x6DFB;&#x52A0;&#xFF0C;statusBar&#x9AD8;&#x5EA6;</td>
 </tr>
 </tbody>
@@ -2147,7 +2166,7 @@ TencentNews.invoke(&apos;getAppInfo&apos;, {&apos;onCallback&apos;: callback});
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"0. 获取客户端信息","level":"3.1.2.1","depth":3,"next":{"title":"1. 获取客户端配置","level":"3.1.2.2","depth":3,"path":"src/APIs/01.App数据/1-getConfigInfo.md","ref":"./src/APIs/01.App数据/1-getConfigInfo.md","articles":[]},"previous":{"title":"App数据","level":"3.1.2","depth":2,"ref":"","articles":[{"title":"0. 获取客户端信息","level":"3.1.2.1","depth":3,"path":"src/APIs/01.App数据/0-getAppInfo.md","ref":"./src/APIs/01.App数据/0-getAppInfo.md","articles":[]},{"title":"1. 获取客户端配置","level":"3.1.2.2","depth":3,"path":"src/APIs/01.App数据/1-getConfigInfo.md","ref":"./src/APIs/01.App数据/1-getConfigInfo.md","articles":[]},{"title":"2. 获取客户端实验字段","level":"3.1.2.3","depth":3,"path":"src/APIs/01.App数据/2-getABTestInfo.md","ref":"./src/APIs/01.App数据/2-getABTestInfo.md","articles":[]},{"title":"3. 获取APP使用时间","level":"3.1.2.4","depth":3,"path":"src/APIs/01.App数据/3-appUsedSeconds.md","ref":"./src/APIs/01.App数据/3-appUsedSeconds.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"accordion":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/APIs/01.App数据/0-getAppInfo.md","mtime":"2020-07-05T05:18:28.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-08T05:47:19.055Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"0. 获取客户端信息","level":"3.1.2.1","depth":3,"next":{"title":"1. 获取客户端配置","level":"3.1.2.2","depth":3,"path":"src/APIs/01.App数据/1-getConfigInfo.md","ref":"./src/APIs/01.App数据/1-getConfigInfo.md","articles":[]},"previous":{"title":"App数据","level":"3.1.2","depth":2,"ref":"","articles":[{"title":"0. 获取客户端信息","level":"3.1.2.1","depth":3,"path":"src/APIs/01.App数据/0-getAppInfo.md","ref":"./src/APIs/01.App数据/0-getAppInfo.md","articles":[]},{"title":"1. 获取客户端配置","level":"3.1.2.2","depth":3,"path":"src/APIs/01.App数据/1-getConfigInfo.md","ref":"./src/APIs/01.App数据/1-getConfigInfo.md","articles":[]},{"title":"2. 获取客户端实验字段","level":"3.1.2.3","depth":3,"path":"src/APIs/01.App数据/2-getABTestInfo.md","ref":"./src/APIs/01.App数据/2-getABTestInfo.md","articles":[]},{"title":"3. 获取APP使用时间","level":"3.1.2.4","depth":3,"path":"src/APIs/01.App数据/3-appUsedSeconds.md","ref":"./src/APIs/01.App数据/3-appUsedSeconds.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"accordion":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/APIs/01.App数据/0-getAppInfo.md","mtime":"2020-07-12T03:57:25.166Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-12T03:57:32.597Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
