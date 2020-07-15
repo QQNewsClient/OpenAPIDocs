@@ -80,8 +80,10 @@ Find.find('./src/LifeCycles') do |path|
 	end
 end
 
-content += "\n---\n\n*\t4.设计资源\n"
-content += "\t*\t[IconFont](http://9.134.99.77/iconfonthtml/demo.html)\n"
+content += "\n\n---\n\n"
+content += "*\t设计资源\n\n"
+content += "*\tIconFont\n\n"
+content += "\t*\t[预览](./src/Design/IconFont.md)\n"
 
 
 File.open('./SUMMARY.md', "w") { |file| file << content }
