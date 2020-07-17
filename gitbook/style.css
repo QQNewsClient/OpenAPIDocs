@@ -3015,8 +3015,11 @@ table {
 }
 .book-summary ul.summary li.active > a {
   color: #fff;
-  background: hsla(207, 100%, 50%, 0.808);
+  background: linear-gradient(to right, hsla(207, 100%, 50%, 0.808), hsla(207, 100%, 50%, 0.558));
   text-decoration: none;
+  border-radius: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 .book-summary ul.summary li ul {
   padding-left: 20px;
