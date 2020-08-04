@@ -1,6 +1,6 @@
 require(["gitbook", "jQuery"], function(gitbook, $) {
     gitbook.events.bind('start', function (e, config) {
-        var conf = config['edit-link'];
+        var conf = config['news-edit-link'];
         var label = '编辑本页';
         var base = conf.base;
 
@@ -15,7 +15,7 @@ require(["gitbook", "jQuery"], function(gitbook, $) {
             onClick: function() {
                 var filepath = gitbook.state.filepath;
 
-                window.open(base + lang + filepath);
+                window.open(base + filepath);
             }
         });
     });
