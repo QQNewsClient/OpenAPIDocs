@@ -2386,7 +2386,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="3-scrollview-&#x6269;&#x5C55;">3. ScrollView &#x6269;&#x5C55;</h3>
+<h3 id="4-scrollview-&#x6269;&#x5C55;">4. ScrollView &#x6269;&#x5C55;</h3>
 <blockquote>
 <p>&#x652F;&#x6301;&#x6A2A;&#x6ED1;ScrollView&#x53F3;&#x4FA7;&#x62D6;&#x62FD;&#x8DF3;&#x8F6C;&#x6548;&#x679C;</p>
 </blockquote>
@@ -2426,8 +2426,84 @@
       textColor &#xFF1A;[&quot;0080FF&quot;,&quot;0080FF&quot;]        //&#x6587;&#x6848;&#x5B57;&#x4F53;&#x989C;&#x8272;&#xFF0C;&#x65E5;&#x95F4;&#x591C;&#x95F4;
       backgroundColor&#xFF1A;[&quot;0080FF&quot;,&quot;0080FF&quot;]   //&#x80CC;&#x666F;&#x989C;&#x8272;&#xFF0C;&#x65E5;&#x95F4;&#x591C;&#x95F4;
     }
-</code></pre><footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x817E;&#x8BAF;&#x65B0;&#x95FB; 2020 all right reserved&#xFF0C; </span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-09-27 17:37:14
+</code></pre><h3 id="5qnfollowbutton">5.QNFollowButton</h3>
+<blockquote>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x5173;&#x6CE8;&#x6309;&#x94AE;&#xFF0C;&#x590D;&#x7528;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5173;&#x6CE8;&#x6570;&#x636E;&#x62C9;&#x53D6;/&#x4E0A;&#x4F20; &#x7B49;&#x7BA1;&#x7406;&#x80FD;&#x529B;&#xFF0C;&#x81EA;&#x52A8;&#x76D1;&#x542C;&#x72B6;&#x6001;&#x53D8;&#x5316;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>&#x5C5E;&#x6027;&#x540D;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>followButtonInfo</td>
+<td>map</td>
+<td>&#x5173;&#x6CE8;&#x6309;&#x94AE;&#x9700;&#x8981;&#x5C55;&#x793A;&#x7684;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>followButtonInfo.type</td>
+<td>string</td>
+<td>&#x5173;&#x6CE8;&#x6309;&#x94AE;&#x7684;&#x7C7B;&#x578B;&#xFF1A;guest/topic/hotTrace/special</td>
+</tr>
+<tr>
+<td>followButtonInfo.guestInfo</td>
+<td>map</td>
+<td>&#x5F85;&#x5173;&#x6CE8;&#x7684;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF08;&#x9002;&#x7528;&#x4E8E; type=guest&#xFF09;</td>
+</tr>
+<tr>
+<td>followButtonInfo.topicItem</td>
+<td>map</td>
+<td>&#x5F85;&#x5173;&#x6CE8;&#x7684;&#x8BDD;&#x9898;&#x6570;&#x636E;&#xFF08;&#x9002;&#x7528;&#x4E8E; type=topic&#xFF09;</td>
+</tr>
+<tr>
+<td>followButtonInfo.item</td>
+<td>map</td>
+<td>&#x5F85;&#x5173;&#x6CE8;&#x7684;&#x6587;&#x7AE0;&#x6570;&#x636E;&#xFF08;&#x9002;&#x7528;&#x4E8E; type=hotTrace/special&#xFF09;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;&#x540D;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isFollow</td>
+<td>&#x65E0;&#x53C2;&#x6570;&#xFF0C;promise&#x56DE;&#x8C03;</td>
+<td>&#x67E5;&#x8BE2;&#x5173;&#x6CE8;&#x72B6;&#x6001;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;isFollow=1/0</td>
+</tr>
+</tbody>
+</table>
+<pre><code>&#x5173;&#x6CE8;&#x6309;&#x94AE;&#x7C7B;&#x578B;&#x542B;&#x4E49;&#xFF1A;
+guest&#xFF1A;&#x666E;&#x901A;&#x7528;&#x6237;&#x6216;om&#x53F7;&#x90FD;&#x662F;&#x8FD9;&#x4E2A;
+topic&#xFF1A;&#x8BDD;&#x9898;
+hotTrace&#xFF1A;&#x70ED;&#x70B9;&#x8FFD;&#x8E2A;
+special&#xFF1A;&#x4E13;&#x9898;
+</code></pre><pre><code>followButtonInfo &#x53C2;&#x6570;&#x793A;&#x4F8B;:
+{
+    &quot;type&quot;:&quot;topic&quot;,
+    &quot;topicItem&quot;:{
+        &quot;tpid&quot;:&quot;123&quot;,
+        &quot;tpname&quot;:&quot;xx&#x8BDD;&#x9898;&quot;
+    },
+    &quot;guestInfo&quot;:{
+
+    },
+    &quot;item&quot;:{
+
+    }
+}
+</code></pre><hr>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x817E;&#x8BAF;&#x65B0;&#x95FB; 2020 all right reserved&#xFF0C; </span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2020-10-01 09:31:07
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2472,7 +2548,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.Hippy 自定义组件","level":"2.1.2.2","depth":3,"next":{"title":"3.Hippy 架构与路由","level":"2.1.2.3","depth":3,"path":"src/Docs/2.Hippy 接入/3.Hippy 架构与路由.md","ref":"./src/Docs/2.Hippy 接入/3.Hippy 架构与路由.md","articles":[]},"previous":{"title":"1.Hippy 接入指引","level":"2.1.2.1","depth":3,"path":"src/Docs/2.Hippy 接入/1.Hippy 接入指引.md","ref":"./src/Docs/2.Hippy 接入/1.Hippy 接入指引.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/Docs/2.Hippy 接入/2.Hippy 自定义组件.md","mtime":"2020-09-27T09:37:14.359Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-27T09:37:34.767Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.Hippy 自定义组件","level":"2.1.2.2","depth":3,"next":{"title":"3.Hippy 架构与路由","level":"2.1.2.3","depth":3,"path":"src/Docs/2.Hippy 接入/3.Hippy 架构与路由.md","ref":"./src/Docs/2.Hippy 接入/3.Hippy 架构与路由.md","articles":[]},"previous":{"title":"1.Hippy 接入指引","level":"2.1.2.1","depth":3,"path":"src/Docs/2.Hippy 接入/1.Hippy 接入指引.md","ref":"./src/Docs/2.Hippy 接入/1.Hippy 接入指引.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/Docs/2.Hippy 接入/2.Hippy 自定义组件.md","mtime":"2020-10-01T01:31:07.596Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-01T01:31:28.302Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
