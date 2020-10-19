@@ -47,7 +47,8 @@ Find.find('./src/APIs') do |path|
 		if File.extname(path) == '.md'
 			if File.basename(path) == 'intro.md'
 			else
-				fileIndex = File.basename(path)[0]
+				# 编号大于9后，只取第一位会有问题，改为匹配数字
+				fileIndex = File.basename(path).match(/(\d+)/)[0]
 				title = IO.readlines(path)[0]
 				trim_title = fileIndex + ". " + strip_or_self!(title[1..-1])
 				content += "\t\t*\t[" + trim_title + "](" + path + ")\n"
@@ -70,7 +71,7 @@ Find.find('./src/LifeCycles') do |path|
 		if File.extname(path) == '.md'
 			if File.basename(path) == 'intro.md'
 			else
-				fileIndex = File.basename(path)[0]
+				fileIndex = File.basename(path).match(/(\d+)/)[0]
 				title = IO.readlines(path)[0]
 				trim_title = fileIndex + ". " + strip_or_self!(title[1..-1])
 				content += "\t\t*\t[" + trim_title + "](" + path + ")\n"
