@@ -2257,7 +2257,7 @@
 <td>onCallback</td>
 <td>Function</td>
 <td>&#x662F;</td>
-<td>&#x83B7;&#x53D6;APP&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</td>
+<td>&#x83B7;&#x53D6; APP &#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</td>
 </tr>
 </tbody>
 </table>
@@ -2277,11 +2277,10 @@
 <td>currentLocationInfo</td>
 <td>Object</td>
 <td>&#x662F;</td>
-<td>&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x7701;&#x5E02;&#x3001;</td>
+<td>&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x7701;&#x5E02;&#x533A;&#x3001;&#x7ECF;&#x7EAC;&#x5EA6;&#x3001;adcode &#x7B49;</td>
 </tr>
 </tbody>
 </table>
-<p>&#x7ECF;&#x7EAC;&#x5EA6;&#x3001;adcode&#x7B49;|</p>
 <p><br></p>
 <h4 id="&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;">&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;</h4>
 <div class="accordion accordionClose"><div class="accordionButton"><div class="accordionTitle">JS</div><div class="accordionSpinnerBox"><div class="accordionSpinner"></div></div></div><div class="accordionContent">
@@ -2301,15 +2300,30 @@ TencentNews.invoke(&apos;getCurrentLocationInfo&apos;, {&apos;onCallback&apos;: 
 <ol>
 <li><p>&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x65F6;&#x5019;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF1F;</p>
 <ul>
-<li><p>&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x5DF2;&#x7ECF;&#x6709;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x4F1A;&#x5C06;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x7ED9;H5&#x3002;</p>
+<li><p>&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x5DF2;&#x7ECF;&#x6709;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x4F1A;&#x5C06;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x7ED9; H5&#x3002;</p>
 </li>
-<li><p>&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x4F1A;&#x5148;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x83B7;&#x53D6;&#x6210;&#x529F;&#xFF0C;currentLocationInfo &#x5B57;&#x6BB5;&#x5219;&#x4E3A;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5426;&#x5219;currentLocationInfo &#x4E3A;&#x7A7A;&#x3002;H5&#x9875;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;errCode &#x548C;errStr &#x5B57;&#x6BB5;&#x83B7;&#x5F97;&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<li><p>&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x4F1A;&#x5148;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x83B7;&#x53D6;&#x6210;&#x529F;&#xFF0C;currentLocationInfo &#x5B57;&#x6BB5;&#x5219;&#x4E3A;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5426;&#x5219; currentLocationInfo &#x4E3A;&#x7A7A;&#x3002;H5 &#x9875;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; errCode &#x548C; errStr &#x5B57;&#x6BB5;&#x83B7;&#x5F97;&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
 </li>
 </ul>
 </li>
+<li><p>&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>{
+        &quot;errCode&quot;: &quot;0&quot;,
+        &quot;currentLocationInfo&quot;: {
+            &quot;adCode&quot;: &quot;110108&quot;,
+            &quot;address&quot;: &quot;&#x5317;&#x4EAC;&#x5E02;&#x6D77;&#x6DC0;&#x533A;&#x897F;&#x5317;&#x65FA;&#x4E1C;&#x8DEF;10&#x53F7;&#x9662;&#x897F;&#x533A;9&#x53F7;&#x697C;&quot;,
+            &quot;city&quot;: &quot;&#x5317;&#x4EAC;&quot;,
+            &quot;latitude&quot;: 40.040424,
+            &quot;longitude&quot;: 116.273519,
+            &quot;name&quot;: &quot;&#x817E;&#x8BAF;&#x5317;&#x4EAC;&#x603B;&#x90E8;&#x5927;&#x697C;&quot;,
+            &quot;province&quot;: &quot;&#x5317;&#x4EAC;&quot;,        //since 6.2.90
+            &quot;district&quot;: &quot;&#x6D77;&#x6DC0;&#x533A;&quot;    //since 6.2.90
+        }
+}
+</code></pre></li>
 </ol>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x817E;&#x8BAF;&#x65B0;&#x95FB; 2020 all right reserved&#xFF0C; </span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-10-19 20:17:00
+2020-10-21 17:29:50
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2354,7 +2368,7 @@ TencentNews.invoke(&apos;getCurrentLocationInfo&apos;, {&apos;onCallback&apos;: 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3. 获取地理位置","level":"3.1.12.3","depth":3,"next":{"title":"4. 打开本地push总开关","level":"3.1.12.4","depth":3,"path":"src/APIs/11.推送、地理位置及权限/4-enableLocalPush.md","ref":"./src/APIs/11.推送、地理位置及权限/4-enableLocalPush.md","articles":[]},"previous":{"title":"2. Push开关是否关闭","level":"3.1.12.2","depth":3,"path":"src/APIs/11.推送、地理位置及权限/2-isAllPushClose.md","ref":"./src/APIs/11.推送、地理位置及权限/2-isAllPushClose.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/APIs/11.推送、地理位置及权限/3-getCurrentLocationInfo.md","mtime":"2020-10-19T12:17:00.665Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-19T12:17:20.913Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3. 获取地理位置","level":"3.1.12.3","depth":3,"next":{"title":"4. 打开本地push总开关","level":"3.1.12.4","depth":3,"path":"src/APIs/11.推送、地理位置及权限/4-enableLocalPush.md","ref":"./src/APIs/11.推送、地理位置及权限/4-enableLocalPush.md","articles":[]},"previous":{"title":"2. Push开关是否关闭","level":"3.1.12.2","depth":3,"path":"src/APIs/11.推送、地理位置及权限/2-isAllPushClose.md","ref":"./src/APIs/11.推送、地理位置及权限/2-isAllPushClose.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/APIs/11.推送、地理位置及权限/3-getCurrentLocationInfo.md","mtime":"2020-10-21T09:29:50.353Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-21T09:30:10.850Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
