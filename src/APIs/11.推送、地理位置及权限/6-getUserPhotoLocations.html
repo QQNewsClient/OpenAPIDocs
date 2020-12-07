@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2. Push开关是否关闭 · 腾讯新闻平台化能力</title>
+        <title>6. 获取照片地理位置 · 腾讯新闻平台化能力</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -94,10 +94,8 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="3-getCurrentLocationInfo.html" />
     
-    
-    <link rel="prev" href="1-isNotificationEnabled.html" />
+    <link rel="prev" href="5-gotoPushSwitchSettingPage.html" />
     
 
     
@@ -1574,7 +1572,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.12.2" data-path="2-isAllPushClose.html">
+        <li class="chapter " data-level="3.1.12.2" data-path="2-isAllPushClose.html">
             
                 <a href="2-isAllPushClose.html">
             
@@ -1626,7 +1624,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.12.6" data-path="6-getUserPhotoLocations.html">
+        <li class="chapter active" data-level="3.1.12.6" data-path="6-getUserPhotoLocations.html">
             
                 <a href="6-getUserPhotoLocations.html">
             
@@ -2261,7 +2259,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >2. Push开关是否关闭</a>
+        <a href="../../.." >6. 获取照片地理位置</a>
     </h1>
 </div>
 
@@ -2276,10 +2274,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="push&#x5F00;&#x5173;&#x662F;&#x5426;&#x5173;&#x95ED;">Push&#x5F00;&#x5173;&#x662F;&#x5426;&#x5173;&#x95ED;</h1>
+                                <h1 id="&#x83B7;&#x53D6;&#x7167;&#x7247;&#x5730;&#x7406;&#x4F4D;&#x7F6E;">&#x83B7;&#x53D6;&#x7167;&#x7247;&#x5730;&#x7406;&#x4F4D;&#x7F6E;</h1>
 <hr>
-<h1 id="isallpushclose">isAllPushClose</h1>
-<pre><code>JSAPI &#x2714;      Hippy &#x2714;      MSApplet &#x2718;      Flutter &#x2718;
+<h1 id="getuserphotolocations">getUserPhotoLocations</h1>
+<pre><code>JSAPI &#x2714;      Hippy &#x2718;      MSApplet &#x2718;      Flutter &#x2718;
 </code></pre><p><br></p>
 <h4 id="&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF1A;">&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF1A;</h4>
 <table>
@@ -2293,10 +2291,28 @@
 </thead>
 <tbody>
 <tr>
+<td>startDate</td>
+<td>String</td>
+<td>&#x5426;</td>
+<td>&#x6307;&#x5B9A;&#x83B7;&#x53D6;&#x4ECE;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x5F00;&#x59CB;&#x7684;&#x7167;&#x7247;&#x4FE1;&#x606F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&apos;1.1.2020&apos; &#x8868;&#x793A;&#x83B7;&#x53D6; 2020 &#x5E74; 1 &#x6708; 1 &#x65E5;&#x53CA;&#x4E4B;&#x540E;&#x7684;&#x7167;&#x7247;</td>
+</tr>
+<tr>
+<td>maxSize</td>
+<td>Number</td>
+<td>&#x5426;</td>
+<td>&#x6307;&#x5B9A;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; 50</td>
+</tr>
+<tr>
+<td>timeOutSeconds</td>
+<td>Number</td>
+<td>&#x5426;</td>
+<td>&#x6307;&#x5B9A; api &#x8C03;&#x7528;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x957F;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A;&#x79D2;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; 60</td>
+</tr>
+<tr>
 <td>onCallback</td>
 <td>Function</td>
-<td>&#x5426;</td>
-<td>&#x56DE;&#x8C03;&#x65B9;&#x6CD5;</td>
+<td>&#x662F;</td>
+<td>&#x83B7;&#x53D6;&#x7167;&#x7247;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</td>
 </tr>
 </tbody>
 </table>
@@ -2313,26 +2329,61 @@
 </thead>
 <tbody>
 <tr>
-<td>response</td>
-<td>String</td>
-<td>&apos;0&apos; - push&#x5F00;&#x5173;&#x5173;&#x95ED; &apos;1&apos; - push&#x5F00;&#x5173;&#x6253;&#x5F00;</td>
+<td>adcodes</td>
+<td>Array</td>
+<td>&#x662F;</td>
+<td>&#x7167;&#x7247;&#x7684;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x5305;&#x542B; latitude &#x548C; longitude &#x7ECF;&#x7EAC;&#x5EA6;&#x4FE1;&#x606F;&#xFF1B;&#x7528;&#x6237;&#x672A;&#x6388;&#x6743;&#x6216;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x7A7A;&#x6570;&#x7EC4;[]</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <h4 id="&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;">&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;</h4>
 <div class="accordion accordionClose"><div class="accordionButton"><div class="accordionTitle">JS</div><div class="accordionSpinnerBox"><div class="accordionSpinner"></div></div></div><div class="accordionContent">
-<pre><code>var callback = function(info){
-    alert(info);
+<pre><code>var callback = function(data){
+    alert(data);
 };
-TencentNews.invoke(&apos;isAllPushClose&apos;, {&apos;onCallback&apos;: callback});
+TencentNews.invoke(&apos;getUserPhotoLocations&apos;, {
+    &apos;startDate&apos;: &apos;1.10.2020&apos;, //&#x83B7;&#x53D6;&#x4ECE;2020&#x5E74;10&#x6708;1&#x65E5;&#x5F00;&#x59CB;&#x7684;&#x7167;&#x7247;&#x6570;&#x636E;
+    &apos;maxSize&apos;: 66,     //&#x6700;&#x591A;&#x8FD4;&#x56DE;66&#x4E2A;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;
+    &apos;timeOutSeconds&apos;: 30,     //30&#x79D2;&#x540E;&#x65E0;&#x54CD;&#x5E94;&#x89C6;&#x4E3A;&#x8D85;&#x65F6;
+    &apos;onCallback&apos;: callback
+});
 </code></pre></div></div>
 <div class="accordion accordionClose"><div class="accordionButton"><div class="accordionTitle">Hippy</div><div class="accordionSpinnerBox"><div class="accordionSpinner"></div></div></div><div class="accordionContent">
 </div></div>
+<div class="accordion accordionClose"><div class="accordionButton"><div class="accordionTitle">MSApplet</div><div class="accordionSpinnerBox"><div class="accordionSpinner"></div></div></div><div class="accordionContent">
+</div></div>
+<div class="accordion accordionClose"><div class="accordionButton"><div class="accordionTitle">Flutter</div><div class="accordionSpinnerBox"><div class="accordionSpinner"></div></div></div><div class="accordionContent">
+</div></div>
 <p><br></p>
 <h4 id="&#x5E38;&#x89C1;&#x95EE;&#x9898;&#xFF1A;">&#x5E38;&#x89C1;&#x95EE;&#x9898;&#xFF1A;</h4>
+<ol>
+<li><p>&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x65F6;&#x5019;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF1F;</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x7528;&#x6237;&#x5DF2;&#x6388;&#x6743;&#xFF0C;&#x67E5;&#x8BE2;&#x6388;&#x6743;&#x60C5;&#x51B5;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>userPhotoAuthorization</code>&#x63A5;&#x53E3;</p>
+</li>
+<li><p>&#x5176;&#x6B21;&#x53EF;&#x80FD;&#x662F;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x4E86;&#x62CD;&#x7167;&#x65F6;&#x4E0D;&#x8BB0;&#x5F55;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x6240;&#x4EE5;&#x83B7;&#x53D6;&#x4E0D;&#x5230;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>{
+        &quot;errCode&quot;: &quot;0&quot;,    //-1000&#x4E3A;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;
+        &quot;adcodes&quot;: [
+           {
+            &quot;latitude&quot;: 40.040424,
+            &quot;longitude&quot;: 116.273519
+           },
+           {
+            &quot;latitude&quot;: 40.040424,
+            &quot;longitude&quot;: 116.273519
+           }
+       ]
+}
+</code></pre></li>
+</ol>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x817E;&#x8BAF;&#x65B0;&#x95FB; 2020 all right reserved&#xFF0C; </span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-12-07 12:07:18
+2020-12-07 12:07:20
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2361,14 +2412,10 @@ TencentNews.invoke(&apos;isAllPushClose&apos;, {&apos;onCallback&apos;: callback
 
             
                 
-                <a href="1-isNotificationEnabled.html" class="navigation navigation-prev " aria-label="Previous page: 1. 系统推送开关是否关闭">
+                <a href="5-gotoPushSwitchSettingPage.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5. 打开push开关设置页面">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="3-getCurrentLocationInfo.html" class="navigation navigation-next " aria-label="Next page: 3. 获取地理位置">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -2377,7 +2424,7 @@ TencentNews.invoke(&apos;isAllPushClose&apos;, {&apos;onCallback&apos;: callback
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. Push开关是否关闭","level":"3.1.12.2","depth":3,"next":{"title":"3. 获取地理位置","level":"3.1.12.3","depth":3,"path":"src/APIs/11.推送、地理位置及权限/3-getCurrentLocationInfo.md","ref":"./src/APIs/11.推送、地理位置及权限/3-getCurrentLocationInfo.md","articles":[]},"previous":{"title":"1. 系统推送开关是否关闭","level":"3.1.12.1","depth":3,"path":"src/APIs/11.推送、地理位置及权限/1-isNotificationEnabled.md","ref":"./src/APIs/11.推送、地理位置及权限/1-isNotificationEnabled.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/APIs/11.推送、地理位置及权限/2-isAllPushClose.md","mtime":"2020-12-07T04:07:18.561Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T04:07:39.303Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6. 获取照片地理位置","level":"3.1.12.6","depth":3,"next":{"title":"其它","level":"3.1.13","depth":2,"ref":"","articles":[{"title":"1. 复制文本","level":"3.1.13.1","depth":3,"path":"src/APIs/12.其它/1-copy.md","ref":"./src/APIs/12.其它/1-copy.md","articles":[]},{"title":"10. 调起充值面板","level":"3.1.13.2","depth":3,"path":"src/APIs/12.其它/10-bonbeanPanel.md","ref":"./src/APIs/12.其它/10-bonbeanPanel.md","articles":[]},{"title":"2. 支付接口","level":"3.1.13.3","depth":3,"path":"src/APIs/12.其它/2-pay.md","ref":"./src/APIs/12.其它/2-pay.md","articles":[]},{"title":"3. 保存图片到本地","level":"3.1.13.4","depth":3,"path":"src/APIs/12.其它/3-saveImageToLocal.md","ref":"./src/APIs/12.其它/3-saveImageToLocal.md","articles":[]},{"title":"4. 同步红包领取信息到native","level":"3.1.13.5","depth":3,"path":"src/APIs/12.其它/4-syncRedpacketUpdateInfo.md","ref":"./src/APIs/12.其它/4-syncRedpacketUpdateInfo.md","articles":[]},{"title":"5. 通知native举报成功","level":"3.1.13.6","depth":3,"path":"src/APIs/12.其它/5-onReportSuccess.md","ref":"./src/APIs/12.其它/5-onReportSuccess.md","articles":[]},{"title":"6. 获取安全码","level":"3.1.13.7","depth":3,"path":"src/APIs/12.其它/6-getSecurityRequestCheckCode.md","ref":"./src/APIs/12.其它/6-getSecurityRequestCheckCode.md","articles":[]},{"title":"7. 批量获取是否关注了某些账号","level":"3.1.13.8","depth":3,"path":"src/APIs/12.其它/7-isFocus.md","ref":"./src/APIs/12.其它/7-isFocus.md","articles":[]},{"title":"8. 更新收藏编辑按钮","level":"3.1.13.9","depth":3,"path":"src/APIs/12.其它/8-updateEditStatus.md","ref":"./src/APIs/12.其它/8-updateEditStatus.md","articles":[]},{"title":"9. 删除本地Items","level":"3.1.13.10","depth":3,"path":"src/APIs/12.其它/9-deleteFavoriteItems.md","ref":"./src/APIs/12.其它/9-deleteFavoriteItems.md","articles":[]}]},"previous":{"title":"5. 打开push开关设置页面","level":"3.1.12.5","depth":3,"path":"src/APIs/11.推送、地理位置及权限/5-gotoPushSwitchSettingPage.md","ref":"./src/APIs/11.推送、地理位置及权限/5-gotoPushSwitchSettingPage.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/APIs/11.推送、地理位置及权限/6-getUserPhotoLocations.md","mtime":"2020-12-07T04:07:20.879Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T04:07:39.303Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
