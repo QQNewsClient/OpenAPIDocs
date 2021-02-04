@@ -2417,7 +2417,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x52A8;&#x6001;&#x914D;&#x7F6E;">&#x52A8;&#x6001;&#x914D;&#x7F6E;</h1>
+                                <h1 id="hippy-binding">Hippy binding</h1>
 <p><br></p>
 <blockquote>
 <p>&#x5C06;JS&#x548C;native&#x7684;&#x4EA4;&#x4E92;&#x884C;&#x4E3A;&#x8F6C;&#x6362;&#x4E3A;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x63D0;&#x524D;&#x7ED1;&#x5B9A;&#x5230;native&#xFF0C;&#x907F;&#x514D;JS&#x548C;native&#x9891;&#x7E41;&#x5F02;&#x6B65;&#x901A;&#x4FE1;</p>
@@ -2426,13 +2426,19 @@
 <h2 id="&#x4F7F;&#x7528;&#x6B65;&#x9AA4;">&#x4F7F;&#x7528;&#x6B65;&#x9AA4;</h2>
 <ol>
 <li>&#x8C03;&#x7528; <strong>bindTag</strong> &#x63A5;&#x53E3;&#xFF0C;&#x5BF9;Hippy component&#x7ED1;&#x5B9A;tag&#xFF0C;&#x4FBF;&#x4E8E;&#x6267;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;Hippy component</li>
-<li>&#x8C03;&#x7528; <strong>bindScroll/bindPan/&#x2026;&#x2026;</strong> &#x7B49;&#x63A5;&#x53E3;&#xFF0C;&#x5BF9;&#x67D0;&#x4E2A;&#x89E6;&#x53D1;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x7ED1;&#x5B9A;</li>
+<li>&#x8C03;&#x7528; <strong>bindScroll/bindPan/...</strong> &#xFF08;&#x4E0D;&#x5305;&#x542B;bindTag&#xFF09;&#x7B49;&#x63A5;&#x53E3;&#xFF0C;&#x5BF9;&#x67D0;&#x4E2A;&#x89E6;&#x53D1;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x7ED1;&#x5B9A;</li>
 </ol>
+<p><br></p>
 <h2 id="hippy-api">Hippy API</h2>
 <h3 id="1-bingtag">1. bingTag</h3>
 <pre><code>&#x53C2;&#x6570;&#xFF1A;
     {
         tag: 100    // &#x6570;&#x5B57;tag
+    }
+
+&#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0
     }
 
 &#x8BF4;&#x660E;&#xFF1A;
@@ -2441,8 +2447,371 @@
 &#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
     View, Text, Image, Modal, Navigator, RefreshWrapperItemView, QNHippyGradientView, QNHippyLottieView, QNHippyNavigationBar, QNHippyActionBar&#x53CA;&#x5B50;&#x7C7B;
 </code></pre><h3 id="2-bindscroll">2. bindScroll</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;
+    {
+        refs:    // &#x53C2;&#x4E0E;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x7684;&#x76F8;&#x5173;Hippy component&#xFF0C;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#xFF0C;&#x5141;&#x8BB8;&#x4E3A;&#x7A7A;
+            [
+                {
+                    tag: 100,    // &#x76F8;&#x5173;Hippy component&#x7684;binding tag&#xFF0C;&#x8DDF;bindTag&#x91CC;&#x7684;tag&#x5BF9;&#x5E94;
+                    prop: top    // &#x53C2;&#x4E0E;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x7684;&#x76F8;&#x5173;Hippy component&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8BE6;&#x89C1;&#x201C;&#x652F;&#x6301;&#x5C5E;&#x6027;&#x201D;&#x7AE0;&#x8282;
+                },
+                {
+                    tag: 101,
+                    prop: height
+                },
+                ...
+            ],
+        targets:    // &#x76EE;&#x6807;Hippy component&#xFF0C;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x4E3A;&#x7A7A;
+            [
+                {
+                    tag: 201,            // &#x76EE;&#x6807;Hippy component&#x7684;binding tag&#xFF0C;&#x8DDF;bindTag&#x91CC;&#x7684;tag&#x5BF9;&#x5E94;
+                    prop: alpha,    // &#x76EE;&#x6807;Hippy component&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x8D4B;&#x503C;&#x7ED9;&#x8BE5;&#x5C5E;&#x6027;
+                    expr: Math.min(1, contentOffsetX / (101_height - 100_top)),
+                                                // &#x8868;&#x8FBE;&#x5F0F;&#xFF0C;JS&#x8BED;&#x6CD5;&#xFF0C;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x662F;&#x6570;&#x503C;&#x7C7B;&#x578B;
+                                                // contentOffsetX&#xFF1A;bindScroll&#x65B9;&#x6CD5;&#x9884;&#x7F6E;&#x7684;&#x5C5E;&#x6027;
+                                                // 101_height&#x3001;100_top&#xFF1A;&#x901A;&#x8FC7;refs&#x8282;&#x70B9;&#x7684;tag&#x548C;prop&#x62FC;&#x63A5;&#x5F97;&#x5230;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x6267;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x524D;&#x4F1A;&#x7528;&#x8BE5;prop&#x5F53;&#x524D;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x6587;&#x672C;&#x66FF;&#x6362;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x6574;&#x4E2A;JS&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x6548;
+                    debug: true        // &#x8BE5;&#x6761;target&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x5426;&#x5F00;&#x542F;debug&#x529F;&#x80FD;&#xFF0C;&#x8BE6;&#x89C1;&#x201C;&#x56DE;&#x8C03;&#x548C;debug&#x201D;&#x7AE0;&#x8282;
+                },
+                {
+                    tag: 202,
+                    prop: hidden,
+                    expr: contentY % 2,
+                    debug: false
+                },
+                ...
+            ],
+        inval_expr: contentX &gt; 100,    // &#x53D6;&#x6D88;&#x7ED1;&#x5B9A;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x662F;Bool&#x7C7B;&#x578B;
+        debug_inval_expr: false            // &#x53D6;&#x6D88;&#x7ED1;&#x5B9A;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x5426;&#x5F00;&#x542F;debug&#x529F;&#x80FD;
+    }
+
+    &#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0(&#x6210;&#x529F;) / -1(&#x5931;&#x8D25;)
+        errStr:    &#x5177;&#x4F53;&#x5931;&#x8D25;&#x539F;&#x56E0;&#x63CF;&#x8FF0;&#xFF0C;&#x8BE6;&#x89C1;&#x201C;errStr&#x8BF4;&#x660E;&#x201D;&#x7AE0;&#x8282;
+    }
+
+    &#x8BF4;&#x660E;&#xFF1A;
+        &#x7ED1;&#x5B9A;&#x5305;&#x542B;ScrollView&#x7684;Hippy component&#x7684;scroll&#x4E8B;&#x4EF6;&#x3002;
+        iOS&#x5728; - (void)scrollViewDidScroll:(UIScrollView *)scrollView &#x65B9;&#x6CD5;&#x6267;&#x884C;&#x65F6;&#x89E6;&#x53D1;&#x8BA1;&#x7B97;&#x3002;
+
+    &#x9884;&#x7F6E;&#x5C5E;&#x6027;&#xFF1A;
+        contentOffsetX&#xFF1A;ScrollView&#x7684;contentOffset&#x7684;x
+        contentOffsetY&#xFF1A;ScrollView&#x7684;contentOffset&#x7684;y
+
+    &#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+        ListView, ScrollView, ViewPager, QNCardPager&#x53CA;&#x5B50;&#x7C7B;
+</code></pre><h3 id="3-unbindscroll">3. unbindScroll</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;&#x65E0;
+
+&#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0
+    }
+
+&#x8BF4;&#x660E;&#xFF1A;
+    &#x53D6;&#x6D88;bindScroll
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    &#x540C;bindScroll
+</code></pre><h3 id="4-bindheaderscroll">4. bindHeaderScroll</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;
+    &#x5B57;&#x6BB5;&#x540C;bindScroll
+
+&#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0(&#x6210;&#x529F;) / -1(&#x5931;&#x8D25;)
+        errStr:    &#x5177;&#x4F53;&#x5931;&#x8D25;&#x539F;&#x56E0;&#x63CF;&#x8FF0;&#xFF0C;&#x8BE6;&#x89C1;&#x201C;errStr&#x8BF4;&#x660E;&#x201D;&#x7AE0;&#x8282;
+    }
+
+&#x8BF4;&#x660E;&#xFF1A;
+    &#x7ED1;&#x5B9A;PageScrollComponent&#x9876;&#x90E8;&#x7684;PSCTopView&#x7684;&#x5782;&#x76F4;scroll&#x4E8B;&#x4EF6;
+
+&#x9884;&#x7F6E;&#x5C5E;&#x6027;&#xFF1A;
+    contentOffsetX&#xFF1A;PSCTopView&#x7684;&#x5782;&#x76F4;scroll&#x504F;&#x79FB;
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    PageScrollComponent
+</code></pre><h3 id="5-unbindheaderscroll">5. unbindHeaderScroll</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;&#x65E0;
+
+&#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0
+    }
+
+&#x8BF4;&#x660E;&#xFF1A;
+    &#x53D6;&#x6D88;bindHeaderScroll
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    &#x540C;bindHeaderScroll
+</code></pre><h3 id="6-bindpan">6. bindPan</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;
+    &#x5B57;&#x6BB5;&#x540C;bindScroll
+
+&#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0(&#x6210;&#x529F;) / -1(&#x5931;&#x8D25;)
+        errStr:    &#x5177;&#x4F53;&#x5931;&#x8D25;&#x539F;&#x56E0;&#x63CF;&#x8FF0;&#xFF0C;&#x8BE6;&#x89C1;&#x201C;errStr&#x8BF4;&#x660E;&#x201D;&#x7AE0;&#x8282;
+    }
+
+&#x8BF4;&#x660E;&#xFF1A;
+    &#x5728;&#x7ED1;&#x5B9A;&#x7684;Hippy component&#x4E0A;&#x6DFB;&#x52A0;panGesture&#xFF0C;&#x7ED1;&#x5B9A;panGesture&#x7684;&#x56DE;&#x8C03;
+
+&#x9884;&#x7F6E;&#x5C5E;&#x6027;&#xFF1A;
+    locationX&#xFF1A;&#x5F53;&#x524D;&#x89E6;&#x70B9;&#x5728;&#x7ED1;&#x5B9A;&#x7684;Hippy component&#x4E0A;&#x7684;&#x7EDD;&#x5BF9;&#x4F4D;&#x7F6E;&#x7684;x
+    locationY&#xFF1A;&#x5F53;&#x524D;&#x89E6;&#x70B9;&#x5728;&#x7ED1;&#x5B9A;&#x7684;Hippy component&#x4E0A;&#x7684;&#x7EDD;&#x5BF9;&#x4F4D;&#x7F6E;&#x7684;y
+    translationX&#xFF1A;&#x5F53;&#x524D;&#x89E6;&#x70B9;&#x76F8;&#x5BF9;&#x4E8E;&#x8D77;&#x59CB;&#x70B9;&#x7684;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#x7684;x
+    translationY&#xFF1A;&#x5F53;&#x524D;&#x89E6;&#x70B9;&#x76F8;&#x5BF9;&#x4E8E;&#x8D77;&#x59CB;&#x70B9;&#x7684;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#x7684;y
+    velocityX&#xFF1A;&#x5F53;&#x524D;&#x89E6;&#x70B9;&#x5728;&#x6C34;&#x5E73;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x52A0;&#x901F;&#x5EA6;
+    velocityY&#xFF1A;&#x5F53;&#x524D;&#x89E6;&#x70B9;&#x5728;&#x5782;&#x76F4;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x52A0;&#x901F;&#x5EA6;
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    View
+</code></pre><h3 id="7-unbindpan">7. unbindPan</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;&#x65E0;
+
+&#x8FD4;&#x56DE;&#xFF1A;
+    {
+        errCode: 0
+    }
+
+&#x8BF4;&#x660E;&#xFF1A;
+    &#x53D6;&#x6D88;bindPan
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    &#x540C;bindPan
+</code></pre><p><br></p>
+<h2 id="&#x652F;&#x6301;&#x5C5E;&#x6027;">&#x652F;&#x6301;&#x5C5E;&#x6027;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x5C5E;&#x6027;</th>
+<th>iOS</th>
+<th>Android</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>left</td>
+<td>view.frame.origin.x</td>
+<td></td>
+</tr>
+<tr>
+<td>right</td>
+<td>view.frame.origin.x + view.frame.size.width</td>
+<td></td>
+</tr>
+<tr>
+<td>top</td>
+<td>view.frame.origin.y</td>
+<td></td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>view.frame.origin.y + view.frame.size.height</td>
+<td></td>
+</tr>
+<tr>
+<td>width</td>
+<td>view.frame.size.width</td>
+<td></td>
+</tr>
+<tr>
+<td>height</td>
+<td>view.frame.size.height</td>
+<td></td>
+</tr>
+<tr>
+<td>centerX</td>
+<td>view.center.x</td>
+<td></td>
+</tr>
+<tr>
+<td>centerY</td>
+<td>view.center.y</td>
+<td></td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>view.alpha</td>
+<td></td>
+</tr>
+<tr>
+<td>opaque</td>
+<td>view.isOpaque&#xFF08;&#x8F6C;&#x6570;&#x503C;&#xFF09;</td>
+<td></td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>view.isHidden&#xFF08;&#x8F6C;&#x6570;&#x503C;&#xFF09;</td>
+<td></td>
+</tr>
+<tr>
+<td>transform_translationX</td>
+<td>view.transform.tx</td>
+<td></td>
+</tr>
+<tr>
+<td>transform_translationY</td>
+<td>view.transform.ty</td>
+<td></td>
+</tr>
+<tr>
+<td>transform_scaleX</td>
+<td>view.transform.a</td>
+<td></td>
+</tr>
+<tr>
+<td>transform_scaleY</td>
+<td>view.transform.d</td>
+<td></td>
+</tr>
+<tr>
+<td>transform_angle</td>
+<td>atan2f(view.transform.b, view.transform.a)</td>
+<td></td>
+</tr>
+<tr>
+<td>transform</td>
+<td>view.transform.a_view.transform.b_view.transform.c<br>_view.transform.d_view.transform.tx_view.transform.ty</td>
+<td></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>view.backgroundColor&#xFF08;&#x8F6C;16&#x8FDB;&#x5236;&#xFF09;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="&#x5B9E;&#x4F8B;">&#x5B9E;&#x4F8B;</h2>
+<p>&#x5F85;&#x8865;&#x5145;</p>
+<p><br></p>
+<h2 id="&#x56DE;&#x8C03;&#x548C;debug">&#x56DE;&#x8C03;&#x548C;debug</h2>
+<h3 id="1-&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x6210;&#x529F;&#x56DE;&#x8C03;&#xFF1A;onbindingsuccess">1. &#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x6210;&#x529F;&#x56DE;&#x8C03;&#xFF1A;onBindingSuccess</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;
+    {
+        bindType: scroll / pan / ...,    // &#x7ED1;&#x5B9A;&#x7C7B;&#x578B;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x6709;scroll&#x548C;pan2&#x79CD;
+        callCount: 666,                                // &#x6267;&#x884C;&#x6B21;&#x6570;
+        expressionValueMap: {                    // &#x6267;&#x884C;&#x65F6;&#x9884;&#x7F6E;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;
+            contentOffsetX: 12,
+            contentOffsetY: 34
+        }
+    }
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    &#x6240;&#x6709;&#x652F;&#x6301;bindScroll/bindPan/...&#xFF08;&#x4E0D;&#x5305;&#x542B;bindTag&#xFF09;&#x7684;Hippy component
+</code></pre><h3 id="2-&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x5931;&#x8D25;&#x56DE;&#x8C03;&#xFF1A;onbindingfail">2. &#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x5931;&#x8D25;&#x56DE;&#x8C03;&#xFF1A;onBindingFail</h3>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;
+    {
+        bindType: scroll / pan / ...,    // &#x7ED1;&#x5B9A;&#x7C7B;&#x578B;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x6709;scroll&#x548C;pan2&#x79CD;
+        callCount: 666,                                // &#x6267;&#x884C;&#x6B21;&#x6570;
+        expressionValueMap: {                    // &#x6267;&#x884C;&#x65F6;&#x9884;&#x7F6E;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;
+            contentOffsetX: 12,
+            contentOffsetY: 34
+        },
+        errorCount: 222,                            // &#x5931;&#x8D25;&#x6B21;&#x6570;
+        consecutiveErrorCount: 44,        // &#x8FDE;&#x7EED;&#x5931;&#x8D25;&#x6B21;&#x6570;
+        errStr: errStr                                // &#x5177;&#x4F53;&#x5931;&#x8D25;&#x539F;&#x56E0;&#x63CF;&#x8FF0;&#xFF0C;&#x8BE6;&#x89C1;&#x201C;errStr&#x8BF4;&#x660E;&#x201D;&#x7AE0;&#x8282;
+    }
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    &#x6240;&#x6709;&#x652F;&#x6301;bindScroll/bindPan/...&#xFF08;&#x4E0D;&#x5305;&#x542B;bindTag&#xFF09;&#x7684;Hippy component
+</code></pre><h2 id="3-&#x53D6;&#x6D88;&#x7ED1;&#x5B9A;&#x56DE;&#x8C03;&#xFF1A;onbindinginvalidate">3. &#x53D6;&#x6D88;&#x7ED1;&#x5B9A;&#x56DE;&#x8C03;&#xFF1A;onBindingInvalidate</h2>
+<pre><code>&#x53C2;&#x6570;&#xFF1A;
+    {
+        bindType: scroll / pan / ...,    // &#x7ED1;&#x5B9A;&#x7C7B;&#x578B;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x6709;scroll&#x548C;pan2&#x79CD;
+    }
+
+&#x652F;&#x6301;&#x7684;Hippy component&#xFF1A;
+    &#x6240;&#x6709;&#x652F;&#x6301;bindScroll/bindPan/...&#xFF08;&#x4E0D;&#x5305;&#x542B;bindTag&#xFF09;&#x7684;Hippy component
+</code></pre><h2 id="4-debug">4. debug</h2>
+<p>&#x76EE;&#x6807;Hippy component&#x9AD8;&#x4EAE;&#x548C;&#x8868;&#x8FBE;&#x5F0F;&#x63D0;&#x793A;&#x6846;&#xFF0C;&#x5F85;&#x8865;&#x5145;</p>
+<p><br></p>
+<h2 id="errstr&#x8BF4;&#x660E;">errStr&#x8BF4;&#x660E;</h2>
+<h3 id="1-&#x8C03;&#x7528;jsapi&#x65F6;">1. &#x8C03;&#x7528;JSAPI&#x65F6;</h3>
+<table>
+<thead>
+<tr>
+<th>errStr</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bindingConfig is nil</td>
+<td>&#x6574;&#x4E2A;API&#x53C2;&#x6570;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>targets config is nil</td>
+<td>targets&#x8282;&#x70B9;&#x4E3A;&#x7A7A;&#x6216;&#x8005;&#x4E0D;&#x662F;&#x5B57;&#x5178;</td>
+</tr>
+<tr>
+<td>item config is invalid</td>
+<td>&#x8282;&#x70B9;&#x4E0D;&#x662F;&#x5B57;&#x5178;</td>
+</tr>
+<tr>
+<td>viewTag is nil</td>
+<td>tag&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>prop is nil, tag: 100</td>
+<td>&#x8282;&#x70B9;&#x7684;prop&#x4E3A;&#x7A7A;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100</td>
+</tr>
+<tr>
+<td>prop is not supported, tag: 100, prop: test</td>
+<td>&#x4E0D;&#x652F;&#x6301;&#x540D;&#x4E3A;test&#x7684;prop&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100</td>
+</tr>
+<tr>
+<td>expr is nil, tag: 100, prop: alpha</td>
+<td>&#x8282;&#x70B9;&#x7684;expr&#x4E3A;&#x7A7A;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100&#xFF0C;prop&#x4E3A;alpha</td>
+</tr>
+<tr>
+<td>duplicated target config, tag: 100, prop: alpha</td>
+<td>target&#x8282;&#x70B9;&#x91CD;&#x590D;&#xFF0C;tag&#x540C;&#x4E3A;100&#xFF0C;prop&#x540C;&#x4E3A;alpha</td>
+</tr>
+<tr>
+<td>target calls undefined prop, tag: 100, prop: alpha</td>
+<td>target&#x8868;&#x8FBE;&#x5F0F;&#x91CC;&#x8C03;&#x7528;&#x4E86;&#x4E0D;&#x5728;refs&#x91CC;&#x7684;prop&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100&#xFF0C;prop&#x4E3A;alpha</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x5931;&#x8D25;&#x65F6;">2. &#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x5931;&#x8D25;&#x65F6;</h3>
+<table>
+<thead>
+<tr>
+<th>errStr</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ref view not exists, tag: 100</td>
+<td>ref&#x8282;&#x70B9;&#x7684;view&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100</td>
+</tr>
+<tr>
+<td>get ref prop error, tag: 100, prop: alpha</td>
+<td>ref&#x8282;&#x70B9;prop&#x53D6;&#x503C;&#x9519;&#x8BEF;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100&#xFF0C;prop&#x4E3A;alpha</td>
+</tr>
+<tr>
+<td>target view not exists, tag: 100</td>
+<td>target&#x8282;&#x70B9;&#x7684;view&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x7684;tag&#x4E3A;100</td>
+</tr>
+<tr>
+<td>call expression error: 1 + contentOffsetX</td>
+<td>&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x8FD4;&#x56DE;undefined&#xFF0C;&#x8BE5;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;&#x201C;1 + contentOffsetX&#x201D;</td>
+</tr>
+<tr>
+<td>set value error: -0.1, expression: 1 + contentOffsetX</td>
+<td>&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x8BBE;&#x7F6E;&#x9519;&#x8BEF;&#xFF0C;&#x8BE5;&#x7ED3;&#x679C;&#x4E3A;-0.1&#xFF0C;&#x8BE5;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;&#x201C;1 + contentOffsetX&#x201D;</td>
+</tr>
+<tr>
+<td>call invalidate expression error: contentOffsetY &lt; 0</td>
+<td>&#x53D6;&#x6D88;&#x7ED1;&#x5B9A;&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x8FD4;&#x56DE;undefined&#xFF0C;&#x8BE5;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;&#x201C;contentOffsetY &lt; 0&#x201D;</td>
+</tr>
+</tbody>
+</table>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x817E;&#x8BAF;&#x65B0;&#x95FB; 2020 all right reserved&#xFF0C; </span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-03 11:47:05
+2021-02-04 14:26:09
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2483,7 +2852,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.Hippy binding","level":"2.1.2.6","depth":3,"next":{"title":"小程序接入","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"1.小程序接入指引","level":"2.1.3.1","depth":3,"path":"src/Docs/3.小程序接入/1.小程序接入指引.md","ref":"./src/Docs/3.小程序接入/1.小程序接入指引.md","articles":[]}]},"previous":{"title":"5.Hippy 动态配置与跳转","level":"2.1.2.5","depth":3,"path":"src/Docs/2.Hippy 接入/5.Hippy 动态配置与跳转.md","ref":"./src/Docs/2.Hippy 接入/5.Hippy 动态配置与跳转.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/Docs/2.Hippy 接入/6.Hippy binding.md","mtime":"2021-02-03T03:47:05.405Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-03T03:47:24.357Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.Hippy binding","level":"2.1.2.6","depth":3,"next":{"title":"小程序接入","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"1.小程序接入指引","level":"2.1.3.1","depth":3,"path":"src/Docs/3.小程序接入/1.小程序接入指引.md","ref":"./src/Docs/3.小程序接入/1.小程序接入指引.md","articles":[]}]},"previous":{"title":"5.Hippy 动态配置与跳转","level":"2.1.2.5","depth":3,"path":"src/Docs/2.Hippy 接入/5.Hippy 动态配置与跳转.md","ref":"./src/Docs/2.Hippy 接入/5.Hippy 动态配置与跳转.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","expandable-chapters","code","splitter","-lunr","-search","-sharing","search-pro","chart","accordion","hide-element","custom-favicon","pageview-count","news-pagefooter","popup","insert-logo","intopic-toc","news-iconfont-style","news-edit-link","news-theme"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 腾讯新闻 2020","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"news-edit-link":{"label":"Edit This Page","base":"https://git.code.oa.com/QQNews_CrossPlatform/Wiki/edit/master"},"news-pagefooter":{},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"de":"In diesem Artikel","en":"Table of Contents","zh-hans":"目录"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"news-iconfont-style":{},"splitter":{},"search-pro":{},"accordion":{},"popup":{},"code":{"copyButtons":true},"news-theme":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"res/images/logo.png","back-to-top-button":{},"pageview-count":{},"custom-favicon":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"highcharts"},"insert-logo":{"style":"background: none; max-height: 50px; min-height: 50px","url":"https://qqnewsclient.github.io/OpenAPIDocs/res/images/logo.png"},"expandable-chapters":{}},"theme":"default","author":"dequanzhu@tencent.com","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"腾讯新闻平台化能力","language":"zh-hans","gitbook":"3.2.3","description":""},"file":{"path":"src/Docs/2.Hippy 接入/6.Hippy binding.md","mtime":"2021-02-04T06:26:09.864Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-04T06:26:28.744Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
